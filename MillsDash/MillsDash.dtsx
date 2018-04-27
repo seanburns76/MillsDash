@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="MillsDash"
   DTS:PackageType="5"
-  DTS:VersionBuild="77"
-  DTS:VersionGUID="{40CADD52-B4A1-4C51-BBE5-9E2F4A9790CD}">
+  DTS:VersionBuild="78"
+  DTS:VersionGUID="{3F334B3E-8E8D-4066-BD13-0A6AC8C2EF18}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAi14RkRjMW0WYOQFc7A+g1QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAiYErBM+XYi6oLLN0IoY1vAAAAAASAAACgAAAAEAAAADl7n+l6r47t3H5e+tCnGA4YAAAATlUFMjuWsGgzoSU9UgE85rD3G4PCajX5FAAAAABa0cj4vun/GqgORJHScNzv6B/Y</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAi14RkRjMW0WYOQFc7A+g1QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD4RFzpcJK3JDEoJgpKcGGLAAAAAASAAACgAAAAEAAAAG7qZ3C/fcdwieGwXhgDjhMYAAAA3ODdwD7HwyHcw9kn4JyZJ+LZ2vI733oEFAAAANk0Q2gMd8xEK51fBGKv0/IKeC7Q</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAi14RkRjMW0WYOQFc7A+g1QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD9tZHK1ZqwFnXVW/Vv0MgxAAAAAASAAACgAAAAEAAAAPjGjdAbYLn2mYefR+WcfjsQAAAAX+4sY4vAWBy+ttLWqtmLKRQAAADytz7rzaUdO5Nzuw2Zt+bOCDjHUw</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAi14RkRjMW0WYOQFc7A+g1QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACLwZdeOTUgddm7VkrSqw66AAAAAASAAACgAAAAEAAAAKhJ9NW2uVcTkYJ4rohtoGkQAAAAZ0cjYS7XdKirZaz7XgYjiBQAAADxPWn/+VaGXo4R9Gk/te1nva4BRA</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -57,7 +57,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAi14RkRjMW0WYOQFc7A+g1QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAC4KEOEQW6A5mIrOuThcgR4AAAAAASAAACgAAAAEAAAADoPiW3AdVmHJ5Hu4ieY+ywYAAAAJwmnYWjsG0hkn+4cikonp7l7xvvoQXsiFAAAAKP3lHKqjpPQfVxYcXU2iELfHKRS</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAi14RkRjMW0WYOQFc7A+g1QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAApGVZDb7fyWQlBqudVROjaAAAAAASAAACgAAAAEAAAAOW1ldbTOc4TSL+snogmeKkYAAAA8Js1NsvlP4MWOM+2+xEBrXpT5GXUq9BoFAAAAPI6zVdWlMMiie6sCWHzfYT80SpR</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -3470,7 +3470,7 @@ and entrydate &gt; '2016-01-01'</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{16C3699E-2E9C-4C62-9CFA-724003BA39FE}"
-          SQLTask:SqlStatementSource="truncate table mill_quality&#xA;truncate table mill_JDE_workorder&#xA;&#xA;truncate table mill_mach_schedule&#xA;truncate table mills_uptime&#xA;--truncate table scrapdollar&#xA;truncate table mill_seams&#x9;&#xA;&#x9;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table mill_quality&#xA;&#xA;truncate table mill_JDE_workorder&#xA;&#xA;truncate table mill_mach_schedule&#xA;&#xA;truncate table mill_seams&#x9;&#xA;&#x9;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -3522,11 +3522,11 @@ ilcrdj as juliandate
 
 FROM amsdta.F4111
 WHERE ILUNCS &gt;0 AND ILCRDJ &gt;= ( 
-	(substr(year(current date - 9 DAYS),2,1)+1) || 
-	substr(year(current date - 9 DAYS),3,2) || 
-	(CASE 	WHEN dayofyear(current date - 9 DAYS) &gt; 99 THEN ('' || dayofyear(current date - 9 DAYS))
-	 	WHEN dayofyear(current date - 9 DAYS) &gt; '9'   THEN ('0' || dayofyear(current date - 9 DAYS))
-		ELSE ('00' || dayofyear(current date - 9 DAYS))
+	(substr(year(current date -1 DAYS),2,1)+1) || 
+	substr(year(current date -1 DAYS),3,2) || 
+	(CASE 	WHEN dayofyear(current date -1 DAYS) &gt; 99 THEN ('' || dayofyear(current date -1 DAYS))
+	 	WHEN dayofyear(current date -1 DAYS) &gt; '9'   THEN ('0' || dayofyear(current date -1 DAYS))
+		ELSE ('00' || dayofyear(current date -1 DAYS))
 	END )
 )</property>
                 <property
@@ -5017,6 +5017,14 @@ and wo.wlstrx &lt;&gt; 0</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Mach Schedule\F3007">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Mach Schedule\Mill_JDE_WorkOrder">
     <Properties>
       <Property>
@@ -5026,14 +5034,6 @@ and wo.wlstrx &lt;&gt; 0</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Mach Schedule\F3007">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -5187,13 +5187,13 @@ and wo.wlstrx &lt;&gt; 0</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="106,42"
-          Id="Package\Unit Cost History\f4111"
-          TopLeft="222,88" />
-        <NodeLayout
           Size="123,42"
           Id="Package\Unit Cost History\Unit_cost"
           TopLeft="289,184" />
+        <NodeLayout
+          Size="106,42"
+          Id="Package\Unit Cost History\f4111"
+          TopLeft="222,88" />
         <EdgeLayout
           Id="Package\Unit Cost History.Paths[OLE DB Source Output]"
           TopLeft="275,130">
@@ -5303,6 +5303,14 @@ and wo.wlstrx &lt;&gt; 0</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\WorkOrders\F3112_F4101_F41002">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\WorkOrders\Mill_JDE_WorkOrder">
     <Properties>
       <Property>
@@ -5312,14 +5320,6 @@ and wo.wlstrx &lt;&gt; 0</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\WorkOrders\F3112_F4101_F41002">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
