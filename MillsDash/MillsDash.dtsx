@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="MillsDash"
   DTS:PackageType="5"
-  DTS:VersionBuild="79"
-  DTS:VersionGUID="{B317044F-504D-4443-8370-EEB5EFDA5717}">
+  DTS:VersionBuild="81"
+  DTS:VersionGUID="{EDD4FCF8-CC8C-4FAB-98C1-0DAFF09F7174}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAi14RkRjMW0WYOQFc7A+g1QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAG0kwzf8SUAVhO9hnhxLrXAAAAAASAAACgAAAAEAAAAGWH68uHWg2fzO3lMQx4YFMYAAAAv31zs1wmhxr5RkmseKzU7IZlao63gMl2FAAAAKPcbSM6fXV72uhAxOEmkWXbsJft</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADgUCgqE4G0ijw9DdmO7pfwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADeITBA259yt4UpFnnPlYzaAAAAAASAAACgAAAAEAAAAENxC6zr2Ba3yG649Lo2ZiAYAAAACyN9BHoTToo8bzxMqCcpsLJUlWJzUqvdFAAAAI57a+ox45RT6Sk31np4me9FwdpZ</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAi14RkRjMW0WYOQFc7A+g1QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACoTXC7xOrrN9r6H4HoMUNSAAAAAASAAACgAAAAEAAAAASxdme1qW2c/0IFz2ZOIyEQAAAAzOd0rtrvU+tkeZolo7uxxxQAAACJqHrn0mLluSAGrQpeQmM1Dy6tAg</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADgUCgqE4G0ijw9DdmO7pfwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABHGAmoZPZTodhUDSt7rj6MAAAAAASAAACgAAAAEAAAAOFMmID14IZnOmiK0ri4pR4QAAAARhBUYvOR2z09G8F1BbTi0xQAAADaApnwVyaXJ7wGfhQiLXea+ffohg</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -57,7 +57,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAi14RkRjMW0WYOQFc7A+g1QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABubtBGnVpTUzKal0UWOqvTAAAAAASAAACgAAAAEAAAAETFFVHX4rC0Ob/lXlXg2nEYAAAANTDih7nluFreeiG1lOCZFTBrrdQdVQOoFAAAAHXfN3w6En8o7GUCWiVIGGIGcQw2</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADgUCgqE4G0ijw9DdmO7pfwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACx16a2wYh1mndWK7ulXVKJAAAAAASAAACgAAAAEAAAAOqm9KN6gntUMpnVgMwDAksYAAAApXJVtaoKHnty+O5dY43WOJbGh9+6Wrg+FAAAAF0ZfdTD4QXXPD0xykAwqmP7cxEn</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -2808,11 +2808,11 @@ ilcrdj as juliandate
 
 FROM amsdta.F4111
 WHERE ILUNCS &gt;0 AND ILCRDJ &gt;= ( 
-	(substr(year(current date -1 DAYS),2,1)+1) || 
-	substr(year(current date -1 DAYS),3,2) || 
-	(CASE 	WHEN dayofyear(current date -1 DAYS) &gt; 99 THEN ('' || dayofyear(current date -1 DAYS))
-	 	WHEN dayofyear(current date -1 DAYS) &gt; '9'   THEN ('0' || dayofyear(current date -1 DAYS))
-		ELSE ('00' || dayofyear(current date -1 DAYS))
+	(substr(year(current date - 1 DAYS),2,1)+1) || 
+	substr(year(current date - 1 DAYS),3,2) || 
+	(CASE 	WHEN dayofyear(current date - 1 DAYS) &gt; 99 THEN ('' || dayofyear(current date - 1 DAYS))
+	 	WHEN dayofyear(current date - 1 DAYS) &gt; '9'   THEN ('0' || dayofyear(current date - 1 DAYS))
+		ELSE ('00' || dayofyear(current date - 1 DAYS))
 	END )
 )</property>
                 <property
@@ -3207,6 +3207,8 @@ WHERE ILUNCS &gt;0 AND ILCRDJ &gt;= (
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT   --this query is pulling data in data from 2016-01-01 to current date -1 to fill a previously truncated table...clear and reload
+
+
 trim(wo.WLMCU) AS WorkCenterNum,
 
 trim(wo.WLDOCO) AS WorkOrder,
@@ -4252,7 +4254,7 @@ and wo.wlstrx &lt;&gt; 0</property>
     design-time-name="Package\Mach Schedule">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="108,42"
           Id="Package\Mach Schedule\F3007"
@@ -4292,7 +4294,9 @@ and wo.wlstrx &lt;&gt; 0</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4323,7 +4327,7 @@ and wo.wlstrx &lt;&gt; 0</property>
     design-time-name="Package\Thrive">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="132,42"
           Id="Package\Thrive\thrive_NCR"
@@ -4363,7 +4367,9 @@ and wo.wlstrx &lt;&gt; 0</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
